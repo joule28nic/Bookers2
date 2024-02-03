@@ -3,7 +3,7 @@
     <div class="col-md-3">
 
       <h2>User info</h2>
-      <%= image_tag current_user.get_profile_image %>
+      <%= image_tag current_user.get_profile_image(100, 100) %>
 
       <table class="table">
         <tbody>
@@ -13,7 +13,7 @@
           </tr>
           <tr>
             <th>introduction</th>
-            <th></th>
+            <th><%= current_user.introduction %></th>
           </tr>
         </tbody>
       </table>
