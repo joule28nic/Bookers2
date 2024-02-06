@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 
   def create
-    @new_book = Book.new(book_params)
-    @new_book.user_id = current_user.id
-    @new_book.save
-    redirect_to book_path(@new_book.id)
   end
 
   def index
@@ -24,8 +20,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   private
